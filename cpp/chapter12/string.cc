@@ -37,9 +37,7 @@ String::String(const String & st)
 
 String::~String()
 {
-    cout << "\"" << str << "\" object delete, ";
     --num_string;
-    cout << num_string << "left\n";
     delete [] str;
 }
 
