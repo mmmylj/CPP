@@ -13,8 +13,8 @@ class linearList
         virtual int size() const = 0;
         virtual T& get(int theIndex) const = 0;
         virtual int indexOf(const t& theElement) const = 0;
-        virtual void erase(int theIndex) const = 0;
-        virtual void insert(int theIndex, const T& theElement) const = 0;
+        virtual void erase(int theIndex) = 0;
+        virtual void insert(int theIndex, const T& theElement) = 0;
         virtual void output(std::ostream& out) const = 0; 
 
         void changeLength1D(T*& a, int oldLength, int newLength)

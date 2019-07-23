@@ -25,5 +25,17 @@ arrayList<T>::arrayList(const arrayList<T>& theList)
 template <class T>
 void arrayList<T>::checkIndex(int theIndex) const
 {
-    
+    if (theIndex < 0 || theIndex >= listSize)
+    {
+        std::ostringstream s;
+        s << "index = " theIndex << "size = " << listSize;
+        throw illegalParamentValue(s.str());
+    }
+}
+
+template <class T>
+T& arrayList<T>::get(int theIndex) const
+{
+    checkIndex(theIndex);
+    return element[theIndex];
 }

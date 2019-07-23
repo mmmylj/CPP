@@ -10,14 +10,13 @@ class arrayList : public linearList<T>
         ~arrayList() {delete [] element}
 
         //ADT function
-        virtual bool empty();
-        virtual int size();
-        virtual T& get(int theIndex);
-        virtual int indexOf(const t& theElement);
+        virtual bool empty() const;
+        virtual int size() const;
+        virtual T& get(int theIndex) const;
+        virtual int indexOf(const t& theElement) const;
         virtual void erase(int theIndex);
         virtual void insert(int theIndex, const T& theElement);
-        virtual void output(std::ostream& out); 
-
+        virtual void output(std::ostream& out) const; 
 
         //other function
         int capacity() const {return arrayLength}
@@ -25,7 +24,7 @@ class arrayList : public linearList<T>
 
 
     private:
-        checkIndex(int theIndex) const;
+        void checkIndex(int theIndex) const;
 
 
         T * element;
