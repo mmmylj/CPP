@@ -1,4 +1,7 @@
 #include "arry_list.h"
+
+using namespace std;
+
 template <class T>
 arrayList<T>::arrayList(int initialCapacity)
 {
@@ -39,3 +42,52 @@ T& arrayList<T>::get(int theIndex) const
     checkIndex(theIndex);
     return element[theIndex];
 }
+
+template<class T>
+int arrayList<T>::indexOf(const T& theElement) const
+{
+    int theIndex = (int) (find(element, element+listSize, theElement)-element);
+    if(theIndex == listSize)
+        return -1;
+    else 
+        return theIndex;
+}
+
+template <class T>
+void arrayList<T>::erase(int theIndex)
+{
+    checkIndex(theIndex);
+    copy(element+theIndex+1,element+listSize,element+theIndex);
+    
+    element[--listSize].~T(); //调用析构释放T内存
+}
+
+template <class T>
+void arrayList<T>::insert(int theIndex, const T& theElement)
+{
+    checkIndex(theIndex);
+    
+    if (listSize == arrayLength)
+        {//数组空间已满，数组长度倍增
+            changeLength1D(element, arrayLength, 2 * arrayLength)
+            arrayLength *= 2;
+        }
+    copy_backward(element+theIndex, element+listSize, element+listSize+1);
+
+    element[theIndex] = theElement;
+    listSize++;
+}
+
+template <class T>
+void arrayList<T>::output(ostream& out) const
+{
+    copy(element, element+listSize, ostreambuf_iterator<T>(cout, " "))
+}
+
+template <class T>
+ostream operator<<(ostream out, const arrayList<T>& x)
+{
+    x.output(out);
+    return out;
+}
+

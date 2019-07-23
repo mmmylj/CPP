@@ -13,7 +13,7 @@ class arrayList : public linearList<T>
         virtual bool empty() const;
         virtual int size() const;
         virtual T& get(int theIndex) const;
-        virtual int indexOf(const t& theElement) const;
+        virtual int indexOf(const T& theElement) const;
         virtual void erase(int theIndex);
         virtual void insert(int theIndex, const T& theElement);
         virtual void output(std::ostream& out) const; 
