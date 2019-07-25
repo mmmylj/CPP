@@ -1,16 +1,17 @@
 #include "arry_list.h"
-
+#include "base_liner.h"
+#include <iostream>
 using namespace std;
 
 template <class T>
 arrayList<T>::arrayList(int initialCapacity)
 {
-    if (initialCapacity <= 0)
-        {
-            std::ostringstream s;
-            s << "InitialCapacity = " << initialCapacity << "must be > 0!";
-            throw illegalParameterValue(s.str());
-        }
+    // if (initialCapacity <= 0)
+    //     {
+    //         std::ostringstream s;
+    //         s << "InitialCapacity = " << initialCapacity << "must be > 0!";
+    //         throw illegalParameterValue(s.str());
+    //     }
     arrayLength = initialCapacity;
     element = new T(arrayLength);
     listSize = 0;
@@ -29,11 +30,12 @@ template <class T>
 void arrayList<T>::checkIndex(int theIndex) const
 {
     if (theIndex < 0 || theIndex >= listSize)
-    {
-        std::ostringstream s;
-        s << "index = " theIndex << "size = " << listSize;
-        throw illegalParamentValue(s.str());
-    }
+       std::cout << "error Index";
+    // {
+    //     std::ostringstream s;
+    //     s << "index = " theIndex << "size = " << listSize;
+    //     throw illegalParamentValue(s.str());
+    // }
 }
 
 template <class T>
@@ -46,7 +48,7 @@ T& arrayList<T>::get(int theIndex) const
 template<class T>
 int arrayList<T>::indexOf(const T& theElement) const
 {
-    int theIndex = (int) (find(element, element+listSize, theElement)-element);
+    int theIndex = (int) (std::find(element, element+listSize, theElement)-element);
     if(theIndex == listSize)
         return -1;
     else 
@@ -69,7 +71,7 @@ void arrayList<T>::insert(int theIndex, const T& theElement)
     
     if (listSize == arrayLength)
         {//数组空间已满，数组长度倍增
-            changeLength1D(element, arrayLength, 2 * arrayLength)
+            changeLength1D(element, arrayLength, 2 * arrayLength);
             arrayLength *= 2;
         }
     copy_backward(element+theIndex, element+listSize, element+listSize+1);
@@ -81,7 +83,7 @@ void arrayList<T>::insert(int theIndex, const T& theElement)
 template <class T>
 void arrayList<T>::output(ostream& out) const
 {
-    copy(element, element+listSize, ostreambuf_iterator<T>(cout, " "))
+    copy(element, element+listSize, ostreambuf_iterator<T>(cout, " "));
 }
 
 template <class T>

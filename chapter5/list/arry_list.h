@@ -7,19 +7,21 @@ class arrayList : public linearList<T>
     public:
         arrayList(int initialCapacity = 10);
         arrayList(const arrayList<T>&);
-        ~arrayList() {delete [] element}
+        ~arrayList() {delete [] element;}
 
         //ADT function
-        virtual bool empty() const;
-        virtual int size() const;
-        virtual T& get(int theIndex) const;
-        virtual int indexOf(const T& theElement) const;
-        virtual void erase(int theIndex);
-        virtual void insert(int theIndex, const T& theElement);
-        virtual void output(std::ostream& out) const; 
+        bool empty() const {return listSize == 0;};
+        int size() const {return listSize;};
+        T& get(int theIndex) const;
+        int indexOf(const T& theElement) const;
+        void erase(int theIndex);
+        void insert(int theIndex, const T& theElement);
+        void output(std::ostream& out) const; 
+        int getarrayLength() {return arrayLength;}
+        int getlistSize() {return listSize;}
 
         //other function
-        int capacity() const {return arrayLength}
+        int capacity() const {return arrayLength;}
 
 
 
