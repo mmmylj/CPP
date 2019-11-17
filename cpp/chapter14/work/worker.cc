@@ -1,13 +1,13 @@
 #include "worker0.h"
 #include <iostream>
 using std::cout;
-using std::din;
+using std::cin;
 using std::endl;
 
 //worker methods
 
 //must implement virtual destructor, event if pure
-Worker::~worker() {}
+Worker::~Worker() {}
 
 void Worker::Set()
 {
@@ -19,7 +19,7 @@ void Worker::Set()
         continue;
 }
 
-void Worker::Show()
+void Worker::Show() const
 {
     cout << "Name: " << fullname << "\n";
     cout << "Employee ID" << id << "\n";
@@ -28,14 +28,14 @@ void Worker::Show()
 //Waiter methods
 void Waiter::Set()
 {
-    Worker::set();
+    Worker::Set();
     cout << "Enter waiter's panache rating: ";
     cin >> panache;
     while(cin.get() != '\n')
         continue;
 }
 
-void Waiter::Show()
+void Waiter::Show() const
 {
     cout << "Categrory: Waiter\n";
     Worker::Show();
@@ -47,7 +47,7 @@ void Waiter::Show()
 char * Singer::pv[] = {"other", "alto", "contralto",
             "soprano", "bass", "baritone", "tenor"};
 
-void Singer:Set()
+void Singer::Set()
 {
     Worker::Set();
     cout << "Enter number for singer's vocal range:\n";

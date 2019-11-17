@@ -10,15 +10,15 @@ class Worker    //abstract base class
         long id;
 
     public:
-        worker() : fullname("no one"), id(0L) {}
+        Worker() : fullname("no one"), id(0L) {}
 
-        worker(const std::string & s, long n)
+        Worker(const std::string & s, long n)
             : fullname(s), id(n) {}
 
-        virtual ~worker() = 0;
+        virtual ~Worker() = 0;
         virtual void Set();
         virtual void Show() const;
-}
+};
 
 
 class Waiter : public Worker
@@ -33,7 +33,7 @@ class Waiter : public Worker
         : Worker(wk), panache(p) {}
         void Set();
         void Show() const;
-}
+};
 
 class Singer : public Worker
 {
@@ -52,6 +52,6 @@ class Singer : public Worker
             : Worker(wk), voice(v) {}
         void Set();
         void Show() const;
-}
+};
 
 #endif
